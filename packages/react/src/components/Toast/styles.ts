@@ -1,6 +1,6 @@
 import * as ToastOriginal from '@radix-ui/react-toast'
-import { keyframes } from '@stitches/react'
-import { styled } from '../../styles'
+// import { keyframes } from '@stitches/react'
+import { keyframes, styled } from '../../styles'
 
 const VIEWPORT_PADDING = 32
 
@@ -48,4 +48,45 @@ export const ToastRoot = styled(ToastOriginal.Root, {
       animation: `${swipeOut} 100ms ease-out`
     },
   },
+})
+
+export const ToastTitle = styled(ToastOriginal.Title, {
+  color: '$white',
+  fontWeight: '$bold',
+  fontSize: '$xl',
+  lineHeight: '$base'
+})
+
+export const ToastDescription = styled(ToastOriginal.Description, {
+  color: '$gray200',
+  fontSize: '$sm',
+  lineHeight: '$base',
+  marginTop: '$1'
+})
+
+export const ToastClose = styled(ToastOriginal.Close, {
+  position: 'absolute',
+  top: '$4',
+  right: '$4',
+  background: 'none',
+  border: 'none',
+  color: '$gray200',
+  cursor: 'pointer'
+})
+
+export const ToastViewport = styled(ToastOriginal.Viewport, {
+  position: 'fixed',
+  bottom: 0,
+  right: 0,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 10,
+  width: 390,
+  maxWidth: '100vw',
+  margin: 0,
+  listStyle: 'none',
+  zIndex: 5,
+  outline: 'none',
+  padding: VIEWPORT_PADDING
+
 })

@@ -1,12 +1,24 @@
 import { Button, Toast, ToastProps } from '@ignite-ui/react'
 import { Meta, StoryObj } from '@storybook/react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const DemoToast = (props: ToastProps) => {
   const [isOpen, setOpen] = useState(false)
+
+  const timeRef = useRef(0)
+
+  useEffect(() => {
+    return () => clearTimeout(timeRef.current)
+  }, [])
+
   return (
     <div>
-      <Button onClick={() => setOpen(true)}>Agendar</Button>
+      <Button
+        onClick={() => {
+          setOpen(false)
+          window.clearTimeout(timeRef.current)
+          timeRef.current = window.setTimeout(() => setOpen(true), 100)
+        }}>Agendar</Button>
       <Toast open={isOpen} onOpenChange={setOpen} {...props} />
     </div>
   )
